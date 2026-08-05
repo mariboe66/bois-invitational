@@ -46,9 +46,8 @@
       align-items: center;
       justify-content: space-between;
       padding: 20px 24px;
-      background: rgba(242, 237, 227, 0.88);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      /* Solid bakgrunn på mobil — ingen backdrop-filter som skaper GPU-lag */
+      background: #F2EDE3;
     }
 
     .nav-logo {
@@ -80,6 +79,94 @@
     .nav-links a:focus-visible { color: var(--text); outline: none; }
 
     /* ── MOBILE MENU ── */
+    .menu-btn {
+      display: flex;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 9px 18px;
+      font-family: var(--ff-sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text);
+      cursor: pointer;
+      min-height: 44px;
+      align-items: center;
+    }
+
+    #mobileMenu {
+      position: fixed;
+      inset: 0;
+      background: #253D2C;
+      z-index: 999;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0 40px;
+    }
+    #mobileMenu.open { display: flex; }
+
+    .mmenu-close {
+      position: absolute;
+      top: 48px; right: 24px;
+      background: none;
+      border: none;
+      color: #F2EDE3;
+      font-family: var(--ff-sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      min-height: 44px;
+      min-width: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 0;
+    }
+
+    .mmenu-links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      list-style: none;
+    }
+    .mmenu-links li {
+      width: 100%;
+      border-bottom: 1px solid rgba(242,237,227,0.1);
+    }
+    .mmenu-links li:first-child { border-top: 1px solid rgba(242,237,227,0.1); }
+    .mmenu-links a {
+      display: block;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 52px;
+      font-weight: 900;
+      font-style: italic;
+      color: #F2EDE3;
+      text-decoration: none;
+      line-height: 1;
+      padding: 16px 0;
+      text-align: center;
+    }
+
+    .mmenu-date {
+      position: absolute;
+      bottom: 44px;
+      font-family: var(--ff-sans);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(242,237,227,0.35);
+    }
+
+    @media (min-width: 768px) {
+      .menu-btn { display: none; }
+    }
 
     /* ── HERO ── */
     .hero {
@@ -874,7 +961,12 @@
 
     /* ── DESKTOP ── */
     @media (min-width: 768px) {
-      nav { padding: 22px 48px; }
+      nav {
+        padding: 22px 48px;
+        background: rgba(242, 237, 227, 0.88);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+      }
       .nav-links { display: flex; }
 
 
@@ -938,7 +1030,19 @@
       <li><a href="#baner">Baner</a></li>
       <li><a href="#reglement">Reglement</a></li>
     </ul>
+    <button class="menu-btn" onclick="openMobileMenu()">Meny</button>
   </nav>
+
+  <div id="mobileMenu">
+    <button class="mmenu-close" onclick="closeMobileMenu()">Lukk</button>
+    <ul class="mmenu-links">
+      <li><a href="#program" onclick="closeMobileMenu()">Program</a></li>
+      <li><a href="#spillere" onclick="closeMobileMenu()">Spillere</a></li>
+      <li><a href="#baner" onclick="closeMobileMenu()">Baner</a></li>
+      <li><a href="#reglement" onclick="closeMobileMenu()">Reglement</a></li>
+    </ul>
+    <p class="mmenu-date">13–16 August · España · 2026</p>
+  </div>
 
   <!-- HERO -->
   <header class="hero" aria-labelledby="main-title">
@@ -1456,6 +1560,16 @@
   </footer>
 
   <script>
+    function openMobileMenu() {
+      document.getElementById('mobileMenu').classList.add('open');
+      document.documentElement.style.overflow = 'hidden';
+    }
+
+    function closeMobileMenu() {
+      document.getElementById('mobileMenu').classList.remove('open');
+      document.documentElement.style.overflow = '';
+    }
+
     function toggleRule(btn) {
       const item = btn.closest('.rule-item');
       const isOpen = item.classList.contains('open');
