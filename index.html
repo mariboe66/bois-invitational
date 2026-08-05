@@ -269,52 +269,286 @@
     .program .section-label { color: rgba(242,237,227,0.45); }
     .program .section-title { color: var(--cream); }
 
-    .program-list {
+    .days-list {
       display: flex;
       flex-direction: column;
-      gap: 1px;
+      gap: 2px;
       background: rgba(255,255,255,0.08);
-      border-radius: var(--r-lg);
+      border-radius: var(--r-xl);
       overflow: hidden;
     }
 
-    .program-item {
-      background: rgba(255,255,255,0.03);
-      padding: 24px;
-      display: grid;
-      grid-template-columns: 56px 1fr;
-      gap: 4px 20px;
+    .day-card {
+      background: var(--green);
+      padding: 36px 28px 32px;
       transition: background 0.2s;
     }
-    .program-item:hover { background: rgba(255,255,255,0.07); }
+    .day-card:hover { background: rgba(255,255,255,0.04); }
 
-    .program-date {
+    .day-card-header {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 6px 28px;
+      margin-bottom: 28px;
+    }
+
+    .day-num {
       font-family: var(--ff-serif);
-      font-size: 36px;
+      font-size: 44px;
       font-weight: 900;
       font-style: italic;
-      color: rgba(242,237,227,0.2);
+      color: rgba(242,237,227,0.14);
       line-height: 1;
       grid-row: span 2;
       align-self: center;
     }
 
-    .program-day {
+    .day-eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(242,237,227,0.4);
+      align-self: end;
+    }
+
+    .day-date-title {
+      font-family: var(--ff-serif);
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1.1;
+      align-self: start;
+    }
+
+    .day-round {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 28px;
+      padding-bottom: 8px;
+    }
+
+    .day-round + .day-round { margin-top: 24px; }
+
+    /* Course image placeholder */
+    .course-img-placeholder {
+      width: 100%;
+      aspect-ratio: 16 / 7;
+      border: 1px dashed rgba(255,255,255,0.15);
+      border-radius: var(--r-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      background: rgba(255,255,255,0.02);
+      overflow: hidden;
+    }
+
+    .course-img-placeholder span {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(242,237,227,0.18);
+    }
+
+    .course-img-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .round-time-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(242,237,227,0.3);
+      margin-bottom: 6px;
+    }
+
+    .tee-time-label {
       font-size: 10px;
       font-weight: 500;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: rgba(242,237,227,0.5);
-      align-self: end;
+      color: rgba(242,237,227,0.38);
+      margin-bottom: 8px;
     }
 
-    .program-course {
+    .hcp-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(242,237,227,0.35);
+      margin-bottom: 6px;
+    }
+
+    .round-course-name {
       font-family: var(--ff-serif);
       font-size: 22px;
       font-weight: 700;
       color: var(--cream);
       line-height: 1.1;
-      align-self: start;
+      margin-bottom: 20px;
+    }
+
+    .round-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .teetime-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255,255,255,0.08);
+      border-radius: var(--r-sm);
+      padding: 7px 14px;
+    }
+
+    .teetime-clock {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--cream);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .teetime-group {
+      font-size: 12px;
+      color: rgba(242,237,227,0.5);
+    }
+
+    .format-tag {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(242,237,227,0.09);
+      border-radius: 100px;
+      padding: 6px 14px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(242,237,227,0.75);
+    }
+
+    .team-rules-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .team-rule-block {
+      background: rgba(255,255,255,0.07);
+      border-radius: var(--r-md);
+      padding: 18px;
+    }
+
+    .team-rule-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(242,237,227,0.65);
+      margin-bottom: 14px;
+    }
+
+    .hcp-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-bottom: 12px;
+    }
+
+    .hcp-chip {
+      background: rgba(242,237,227,0.13);
+      border-radius: 4px;
+      padding: 3px 9px;
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(242,237,227,0.88);
+    }
+
+    .rule-lines {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .rule-lines li {
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(242,237,227,0.80);
+      line-height: 1.55;
+      padding-left: 14px;
+      position: relative;
+    }
+
+    .rule-lines li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: rgba(242,237,227,0.35);
+    }
+
+    .common-rules-block {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      margin-top: 28px;
+      padding-top: 24px;
+    }
+
+    .common-rules-title {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(242,237,227,0.35);
+      margin-bottom: 16px;
+    }
+
+    .common-rule-row { margin-bottom: 12px; }
+
+    .common-rule-name {
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(242,237,227,0.7);
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .common-rule-desc {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(242,237,227,0.45);
+      line-height: 1.6;
+    }
+
+    .highlight-block {
+      background: rgba(242,237,227,0.05);
+      border-radius: var(--r-md);
+      padding: 18px 20px;
+      margin-top: 20px;
+    }
+
+    .highlight-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(242,237,227,0.35);
+      margin-bottom: 6px;
+    }
+
+    .highlight-text {
+      font-size: 14px;
+      color: rgba(242,237,227,0.7);
+      line-height: 1.5;
     }
 
     /* ── PLAYERS ── */
@@ -539,6 +773,72 @@
       padding-bottom: 24px;
     }
 
+    /* ── TOURNAMENT TABLE ── */
+    .tourney-table {
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .tourney-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr auto;
+      gap: 12px;
+      padding: 13px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      align-items: center;
+    }
+
+    .tourney-row:last-child { border-bottom: none; }
+
+    .tourney-row--header {
+      background: rgba(255,255,255,0.05);
+      padding: 9px 20px;
+    }
+
+    .tourney-row--header span {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(242,237,227,0.35);
+    }
+
+    .tourney-round {
+      font-size: 13px;
+      color: rgba(242,237,227,0.7);
+      line-height: 1.4;
+    }
+
+    .tourney-format {
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(242,237,227,0.55);
+    }
+
+    .tourney-points {
+      font-family: var(--ff-serif);
+      font-size: 20px;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--cream);
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .tourney-note {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(242,237,227,0.5);
+      line-height: 1.65;
+      margin-bottom: 40px;
+      padding: 14px 18px;
+      background: rgba(255,255,255,0.03);
+      border-radius: var(--r-md);
+      border-left: 2px solid rgba(255,255,255,0.12);
+    }
+
     /* ── FOOTER ── */
     footer {
       background: var(--text);
@@ -606,9 +906,11 @@
         gap: 10px;
       }
 
-      .program-item { padding: 28px 32px; }
-      .program-date { font-size: 48px; }
-      .program-course { font-size: 28px; }
+      .day-card { padding: 48px 40px 44px; }
+      .day-num { font-size: 56px; }
+      .day-date-title { font-size: 32px; }
+      .round-course-name { font-size: 26px; }
+      .day-round { padding-top: 36px; }
     }
 
     @media (min-width: 1024px) {
@@ -671,27 +973,168 @@
   <section class="section program reveal" id="program" aria-labelledby="program-heading">
     <p class="section-label">Turneringsplan</p>
     <h2 class="section-title" id="program-heading">Pro<em>gram</em></h2>
-    <div class="program-list" role="list">
-      <div class="program-item" role="listitem">
-        <div class="program-date" aria-hidden="true">13</div>
-        <div class="program-day">Torsdag · 13. august</div>
-        <div class="program-course">[Bane 1]</div>
+    <div class="days-list" role="list">
+
+      <!-- DAG 1 -->
+      <div class="day-card" role="listitem">
+        <div class="day-card-header">
+          <div class="day-num" aria-hidden="true">01</div>
+          <p class="day-eyebrow">Dag 1</p>
+          <h3 class="day-date-title">Torsdag · 13. august</h3>
+        </div>
+        <div class="day-round">
+          <div class="course-img-placeholder">
+            <img src="img/plantio.jpeg" alt="Club de Golf El Plantío — luftfoto av banen">
+          </div>
+          <h4 class="round-course-name">Club de Golf El Plantío</h4>
+          <p class="tee-time-label">Tee time</p>
+          <div class="round-row">
+            <div class="teetime-pill">
+              <span class="teetime-clock">15:04</span>
+              <span class="teetime-group">3-manns lag</span>
+            </div>
+            <div class="teetime-pill">
+              <span class="teetime-clock">15:12</span>
+              <span class="teetime-group">4-manns lag</span>
+            </div>
+            <span class="format-tag">Scramble</span>
+          </div>
+          <div class="team-rules-grid">
+            <div class="team-rule-block">
+              <p class="team-rule-label">3-manns lag</p>
+              <p class="hcp-label">Handicap</p>
+              <div class="hcp-chips">
+                <span class="hcp-chip">35%</span>
+                <span class="hcp-chip">20%</span>
+                <span class="hcp-chip">15%</span>
+              </div>
+              <ul class="rule-lines">
+                <li>3 utslag per spiller</li>
+                <li>2 mulligans valgfri bruk (kun utslag)</li>
+              </ul>
+            </div>
+            <div class="team-rule-block">
+              <p class="team-rule-label">4-manns lag</p>
+              <p class="hcp-label">Handicap</p>
+              <div class="hcp-chips">
+                <span class="hcp-chip">25%</span>
+                <span class="hcp-chip">20%</span>
+                <span class="hcp-chip">15%</span>
+                <span class="hcp-chip">10%</span>
+              </div>
+              <ul class="rule-lines">
+                <li>3 utslag per spiller</li>
+                <li>1 mulligan front</li>
+                <li>1 mulligan back (kun utslag)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="program-item" role="listitem">
-        <div class="program-date" aria-hidden="true">14</div>
-        <div class="program-day">Fredag · 14. august — Runde 1</div>
-        <div class="program-course">[Bane 2]</div>
+
+      <!-- DAG 2 -->
+      <div class="day-card" role="listitem">
+        <div class="day-card-header">
+          <div class="day-num" aria-hidden="true">02</div>
+          <p class="day-eyebrow">Dag 2</p>
+          <h3 class="day-date-title">Fredag · 14. august</h3>
+        </div>
+
+        <div class="day-round">
+          <div class="course-img-placeholder">
+            <img src="img/font-del-llop.webp" alt="Font del Llop Golf">
+          </div>
+          <p class="round-time-label">Morgen</p>
+          <h4 class="round-course-name">Font del Llop</h4>
+          <p class="tee-time-label">Tee time</p>
+          <div class="round-row">
+            <div class="teetime-pill">
+              <span class="teetime-clock">09:40</span>
+              <span class="teetime-group">2 vs 1</span>
+            </div>
+            <div class="teetime-pill">
+              <span class="teetime-clock">09:50</span>
+              <span class="teetime-group">2 vs 2</span>
+            </div>
+            <span class="format-tag">Best Ball Skins</span>
+          </div>
+          <ul class="rule-lines">
+            <li>Alle spiller egen ball — beste netto score telles per hull</li>
+            <li>100% handikap</li>
+            <li>Uavgjort: poeng går i potten til neste hull</li>
+          </ul>
+        </div>
+
+        <div class="day-round">
+          <div class="course-img-placeholder">
+            <img src="img/alenda.jpg" alt="Alenda Golf">
+          </div>
+          <p class="round-time-label">Ettermiddag</p>
+          <h4 class="round-course-name">Alenda Golf</h4>
+          <p class="tee-time-label">Tee time</p>
+          <div class="round-row">
+            <div class="teetime-pill">
+              <span class="teetime-clock">16:50</span>
+              <span class="teetime-group">2 vs 1</span>
+            </div>
+            <div class="teetime-pill">
+              <span class="teetime-clock">17:00</span>
+              <span class="teetime-group">2 vs 2</span>
+            </div>
+            <span class="format-tag">Alternate Shot Matchplay</span>
+          </div>
+          <ul class="rule-lines">
+            <li>Annenhvert slag — annenhvert utslag</li>
+            <li>100% handikap</li>
+          </ul>
+        </div>
+
+        <div class="common-rules-block">
+          <p class="common-rules-title">Felles regler · Dag 2</p>
+          <div class="common-rule-row">
+            <span class="common-rule-name">Double</span>
+            <span class="common-rule-desc">Hvert lag kan én gang per runde erklære dobbelt poeng. For skins: gjelder kun hullet, ikke potten.</span>
+          </div>
+          <div class="common-rule-row">
+            <span class="common-rule-name">Reverse Mulligan</span>
+            <span class="common-rule-desc">2 per lag per runde.</span>
+          </div>
+        </div>
       </div>
-      <div class="program-item" role="listitem">
-        <div class="program-date" aria-hidden="true">14</div>
-        <div class="program-day">Fredag · 14. august — Runde 2</div>
-        <div class="program-course">[Bane 3]</div>
+
+      <!-- DAG 3 -->
+      <div class="day-card" role="listitem">
+        <div class="day-card-header">
+          <div class="day-num" aria-hidden="true">03</div>
+          <p class="day-eyebrow">Dag 3</p>
+          <h3 class="day-date-title">Lørdag · 15. august</h3>
+        </div>
+        <div class="day-round">
+          <div class="course-img-placeholder">
+            <img src="img/la-marquesa.jpeg" alt="La Marquesa Golf">
+          </div>
+          <h4 class="round-course-name">La Marquesa Golf</h4>
+          <p class="tee-time-label">Tee time</p>
+          <div class="round-row">
+            <div class="teetime-pill">
+              <span class="teetime-clock">08:26</span>
+            </div>
+            <div class="teetime-pill">
+              <span class="teetime-clock">08:34</span>
+            </div>
+            <span class="format-tag">Individuell Stableford</span>
+          </div>
+          <ul class="rule-lines">
+            <li>100% handikap — alle spiller sin egen ball</li>
+            <li>Laget med høyest gjennomsnittlig poengsum vinner</li>
+          </ul>
+          <div class="highlight-block">
+            <p class="highlight-label">Ekstra konkurranse</p>
+            <p class="highlight-text">Close to the Pin — individuell konkurranse med trofé</p>
+          </div>
+        </div>
       </div>
-      <div class="program-item" role="listitem">
-        <div class="program-date" aria-hidden="true">15</div>
-        <div class="program-day">Lørdag · 15. august</div>
-        <div class="program-course">[Bane 4]</div>
-      </div>
+
     </div>
   </section>
 
@@ -703,42 +1146,42 @@
 
       <article class="player-card player-card--featured" tabindex="0">
         <div class="player-photo" aria-label="Spillerfoto — kommer">
-          <span class="player-initials" aria-hidden="true">A</span>
+          <span class="player-initials" aria-hidden="true">M</span>
         </div>
         <div class="player-info">
-          <p class="player-name">[Navn]</p>
-          <p class="player-hcp">HCP <strong>[00]</strong></p>
+          <p class="player-name">Mjøs</p>
+          <p class="player-hcp">HCP <strong>10,2</strong></p>
         </div>
       </article>
 
       <article class="player-card" tabindex="0">
-        <div class="player-photo" aria-label="Spillerfoto — kommer"><span class="player-initials" aria-hidden="true">B</span></div>
-        <div class="player-info"><p class="player-name">[Navn]</p><p class="player-hcp">HCP <strong>[00]</strong></p></div>
+        <div class="player-photo" aria-label="Spillerfoto — kommer"><span class="player-initials" aria-hidden="true">S</span></div>
+        <div class="player-info"><p class="player-name">Sumstad</p><p class="player-hcp">HCP <strong>20,5</strong></p></div>
       </article>
 
       <article class="player-card" tabindex="0">
-        <div class="player-photo" aria-label="Spillerfoto — kommer"><span class="player-initials" aria-hidden="true">C</span></div>
-        <div class="player-info"><p class="player-name">[Navn]</p><p class="player-hcp">HCP <strong>[00]</strong></p></div>
+        <div class="player-photo" aria-label="Spillerfoto — kommer"><span class="player-initials" aria-hidden="true">A</span></div>
+        <div class="player-info"><p class="player-name">Angel</p><p class="player-hcp">HCP <strong>22,6</strong></p></div>
       </article>
 
       <article class="player-card" tabindex="0">
-        <div class="player-photo" aria-label="Spillerfoto — kommer"><span class="player-initials" aria-hidden="true">D</span></div>
-        <div class="player-info"><p class="player-name">[Navn]</p><p class="player-hcp">HCP <strong>[00]</strong></p></div>
+        <div class="player-photo" aria-label="Spillerfoto — kommer"><span class="player-initials" aria-hidden="true">L</span></div>
+        <div class="player-info"><p class="player-name">Lars</p><p class="player-hcp">HCP <strong>26,1</strong></p></div>
+      </article>
+
+      <article class="player-card" tabindex="0">
+        <div class="player-photo" aria-label="Spillerfoto — kommer"><span class="player-initials" aria-hidden="true">S</span></div>
+        <div class="player-info"><p class="player-name">Sala</p><p class="player-hcp">HCP <strong>34,0</strong></p></div>
       </article>
 
       <article class="player-card" tabindex="0">
         <div class="player-photo" aria-label="Spillerfoto — kommer"><span class="player-initials" aria-hidden="true">E</span></div>
-        <div class="player-info"><p class="player-name">[Navn]</p><p class="player-hcp">HCP <strong>[00]</strong></p></div>
-      </article>
-
-      <article class="player-card" tabindex="0">
-        <div class="player-photo" aria-label="Spillerfoto — kommer"><span class="player-initials" aria-hidden="true">F</span></div>
-        <div class="player-info"><p class="player-name">[Navn]</p><p class="player-hcp">HCP <strong>[00]</strong></p></div>
+        <div class="player-info"><p class="player-name">Engan</p><p class="player-hcp">HCP <strong>36,0</strong></p></div>
       </article>
 
       <article class="player-card" tabindex="0">
         <div class="player-photo" aria-label="Spillerfoto — kommer"><span class="player-initials" aria-hidden="true">G</span></div>
-        <div class="player-info"><p class="player-name">[Navn]</p><p class="player-hcp">HCP <strong>[00]</strong></p></div>
+        <div class="player-info"><p class="player-name">Grande</p><p class="player-hcp">HCP <strong>36,0</strong></p></div>
       </article>
 
     </div>
@@ -829,7 +1272,57 @@
   <section class="section rules reveal" id="reglement" aria-labelledby="rules-heading">
     <p class="section-label">Spilleregler</p>
     <h2 class="section-title" id="rules-heading">Regle<em>ment</em></h2>
+    <!-- Turneringsoppsett -->
+    <div class="tourney-table" role="table" aria-label="Turneringsoppsett">
+      <div class="tourney-row tourney-row--header" role="row">
+        <span role="columnheader">Runde</span>
+        <span role="columnheader">Format</span>
+        <span role="columnheader">Poeng</span>
+      </div>
+      <div class="tourney-row" role="row">
+        <span class="tourney-round" role="cell">Runde 1 · El Plantío</span>
+        <span class="tourney-format" role="cell">Scramble</span>
+        <span class="tourney-points" role="cell">2</span>
+      </div>
+      <div class="tourney-row" role="row">
+        <span class="tourney-round" role="cell">Runde 2 · Font del Llop</span>
+        <span class="tourney-format" role="cell">Best Ball Skins</span>
+        <span class="tourney-points" role="cell">2 per match</span>
+      </div>
+      <div class="tourney-row" role="row">
+        <span class="tourney-round" role="cell">Runde 3 · Alenda Golf</span>
+        <span class="tourney-format" role="cell">Alternate Shot Matchplay</span>
+        <span class="tourney-points" role="cell">2 per match</span>
+      </div>
+      <div class="tourney-row" role="row">
+        <span class="tourney-round" role="cell">Runde 4 · La Marquesa</span>
+        <span class="tourney-format" role="cell">Individuell Stableford</span>
+        <span class="tourney-points" role="cell">4</span>
+      </div>
+    </div>
+
+    <p class="tourney-note">
+      Ved uavgjort spilles Close to the Pin med Scramble. Ingen ledige hull → Chip Green benyttes. Spiller med høyest poeng i Stableford bestemmer avstand på slaget.
+    </p>
+
     <div class="rules-list">
+
+      <div class="rule-item">
+        <button class="rule-trigger" onclick="toggleRule(this)" aria-expanded="false">
+          <span class="rule-name">Generelle regler</span>
+          <span class="rule-icon" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg>
+          </span>
+        </button>
+        <div class="rule-body" role="region">
+          3-mannslaget spiller alltid i første flight. Firer-laget har ansvar for å ikke miste [XX].<br><br>
+          Chulligan er i spill på alle utslag.<br><br>
+          Kapteinen setter opp eget lag på runde 2 og 3.<br><br>
+          Kapteinen utnevner Hydra-rasjon-ansvarlig på laget.<br><br>
+          Birdiejuice er obligatorisk.<br><br>
+          Laget som taper runden skylder det andre laget en runde.
+        </div>
+      </div>
 
       <div class="rule-item">
         <button class="rule-trigger" onclick="toggleRule(this)" aria-expanded="false">
@@ -839,19 +1332,7 @@
           </span>
         </button>
         <div class="rule-body" role="region">
-          [Regler for lagtrekning legges inn her — f.eks. hvordan lag trekkes ut, eventuelle jokere, osv.]
-        </div>
-      </div>
-
-      <div class="rule-item">
-        <button class="rule-trigger" onclick="toggleRule(this)" aria-expanded="false">
-          <span class="rule-name">Scoreregler</span>
-          <span class="rule-icon" aria-hidden="true">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg>
-          </span>
-        </button>
-        <div class="rule-body" role="region">
-          [Scoreregler legges inn her — format, tellemåte, handicap, osv.]
+          [Regler for lagtrekning legges inn her]
         </div>
       </div>
 
@@ -863,7 +1344,7 @@
           </span>
         </button>
         <div class="rule-body" role="region">
-          [Morsomme regler og bøter legges inn her]
+          [Straffer og bøter legges inn her]
         </div>
       </div>
 
