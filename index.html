@@ -184,26 +184,27 @@
 
     .hero-team {
       position: absolute;
+      top: 60px;
+      bottom: auto;
       right: 0;
-      bottom: 0;
-      width: 72%;
+      width: 85%;
       pointer-events: none;
       object-fit: contain;
-      object-position: bottom right;
+      object-position: top right;
       filter: sepia(18%) saturate(82%);
-      -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.5) 28%, black 52%);
-      mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.5) 28%, black 52%);
+      -webkit-mask-image: radial-gradient(ellipse 90% 80% at 70% 50%, black 30%, transparent 75%);
+      mask-image: radial-gradient(ellipse 90% 80% at 70% 50%, black 30%, transparent 75%);
       opacity: 0;
       animation: heroTeamIn 1.4s 0.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
     }
 
     @keyframes heroTeamIn {
       from { opacity: 0; transform: translateY(28px); }
-      to   { opacity: 0.42; transform: translateY(0); }
+      to   { opacity: 0.22; transform: translateY(0); }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .hero-team { animation: none; opacity: 0.42; }
+      .hero-team { animation: none; opacity: 0.22; }
     }
 
     .hero-overline {
@@ -457,7 +458,7 @@
 
     .team-rules-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       gap: 12px;
       margin-top: 20px;
     }
@@ -960,7 +961,12 @@
       .hero-team {
         width: auto;
         height: 92%;
+        top: auto;
+        bottom: 0;
         right: -10px;
+        object-position: bottom right;
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.5) 28%, black 52%);
+        mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.5) 28%, black 52%);
         animation-name: heroTeamInDesktop;
       }
       @keyframes heroTeamInDesktop {
@@ -996,6 +1002,7 @@
       .hero { padding: 140px 80px 80px; }
       .section { padding: 160px 80px; }
       .players-grid { grid-template-columns: repeat(4, 1fr); }
+      .team-rules-grid { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
