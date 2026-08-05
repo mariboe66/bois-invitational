@@ -79,96 +79,7 @@
     .nav-links a:hover,
     .nav-links a:focus-visible { color: var(--text); outline: none; }
 
-    .nav-menu-btn {
-      background: none;
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      padding: 9px 18px;
-      font-family: var(--ff-sans);
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text);
-      cursor: pointer;
-      transition: background 0.2s;
-      min-height: 44px;
-    }
-    .nav-menu-btn:hover { background: rgba(37, 61, 44, 0.08); }
-    .nav-menu-btn:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
-
     /* ── MOBILE MENU ── */
-    /* dialog::backdrop dekker absolutt alt — i nettleserens "top layer" */
-    dialog#menuOverlay {
-      border: none;
-      padding: 0 40px;
-      margin: 0;
-      width: 100vw;
-      max-width: 100vw;
-      height: 100vh;
-      height: 100dvh;
-      max-height: 100vh;
-      background-color: #253D2C;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-    dialog#menuOverlay[open] {
-      display: flex;
-    }
-    dialog#menuOverlay::backdrop {
-      background-color: #253D2C;
-    }
-
-    .menu-close {
-      position: absolute;
-      top: 52px; right: 28px;
-      background: none;
-      border: none;
-      color: #F2EDE3;
-      width: 44px; height: 44px;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer;
-      padding: 0;
-    }
-    .menu-close:focus-visible { outline: 2px solid #F2EDE3; outline-offset: 4px; }
-
-    .menu-nav {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-    }
-
-    .menu-nav a {
-      display: block;
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: 52px;
-      font-weight: 900;
-      font-style: italic;
-      color: #F2EDE3;
-      text-decoration: none;
-      line-height: 1.0;
-      padding: 18px 0;
-      text-align: center;
-      width: 100%;
-      border-bottom: 1px solid rgba(242,237,227,0.1);
-      transition: opacity 0.15s;
-    }
-    .menu-nav a:first-child { border-top: 1px solid rgba(242,237,227,0.1); }
-    .menu-nav a:hover, .menu-nav a:focus-visible { opacity: 0.55; outline: none; }
-
-    .menu-date {
-      position: absolute;
-      bottom: 44px;
-      font-family: 'DM Sans', system-ui, sans-serif;
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(242, 237, 227, 0.38);
-      text-align: center;
-    }
 
     /* ── HERO ── */
     .hero {
@@ -965,7 +876,7 @@
     @media (min-width: 768px) {
       nav { padding: 22px 48px; }
       .nav-links { display: flex; }
-      .nav-menu-btn { display: none; }
+
 
       .hero { padding: 120px 48px 64px; }
       .hero-team {
@@ -1019,7 +930,7 @@
 <body>
 
   <!-- NAV -->
-  <nav id="mainNav">
+  <nav>
     <a href="#" class="nav-logo">Bois Invitational</a>
     <ul class="nav-links" role="list">
       <li><a href="#program">Program</a></li>
@@ -1027,7 +938,6 @@
       <li><a href="#baner">Baner</a></li>
       <li><a href="#reglement">Reglement</a></li>
     </ul>
-    <button class="nav-menu-btn" onclick="openMenu()" aria-haspopup="dialog" aria-label="Åpne meny">Meny</button>
   </nav>
 
   <!-- HERO -->
@@ -1546,25 +1456,6 @@
   </footer>
 
   <script>
-    function openMenu() {
-      document.getElementById('menuOverlay').showModal();
-      document.getElementById('menuOverlay').querySelector('.menu-close').focus();
-    }
-
-    function closeMenu() {
-      document.getElementById('menuOverlay').close();
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-      const overlay = document.getElementById('menuOverlay');
-      if (overlay) {
-        overlay.addEventListener('cancel', e => e.preventDefault());
-        overlay.addEventListener('click', e => {
-          if (e.target === overlay) closeMenu();
-        });
-      }
-    });
-
     function toggleRule(btn) {
       const item = btn.closest('.rule-item');
       const isOpen = item.classList.contains('open');
@@ -1590,21 +1481,6 @@
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
 
-  <!-- MOBILE MENU — native dialog, rendres i top layer over alt -->
-  <dialog id="menuOverlay" aria-label="Navigasjonsmeny">
-    <button class="menu-close" onclick="closeMenu()" aria-label="Lukk meny">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-        <path d="M2 2L18 18M18 2L2 18" stroke="#F2EDE3" stroke-width="1.5" stroke-linecap="round"/>
-      </svg>
-    </button>
-    <nav class="menu-nav" aria-label="Mobilnavigasjon">
-      <a href="#program" onclick="closeMenu()">Program</a>
-      <a href="#spillere" onclick="closeMenu()">Spillere</a>
-      <a href="#baner" onclick="closeMenu()">Baner</a>
-      <a href="#reglement" onclick="closeMenu()">Reglement</a>
-    </nav>
-    <p class="menu-date">13–16 August · España · 2026</p>
-  </dialog>
 
 </body>
 </html>
