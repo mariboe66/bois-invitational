@@ -51,13 +51,6 @@
       -webkit-backdrop-filter: blur(16px);
     }
 
-    /* iOS Safari: backdrop-filter creates a stacking context that bleeds above higher z-index elements */
-    body.menu-open nav {
-      z-index: 1;
-      backdrop-filter: none;
-      -webkit-backdrop-filter: none;
-    }
-
     .nav-logo {
       font-family: var(--ff-sans);
       font-size: 11px;
@@ -106,69 +99,65 @@
 
     /* ── MOBILE MENU ── */
     .menu-overlay {
+      display: none;
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: var(--green);
-      z-index: 200;
-      display: flex;
+      background-color: #253D2C;
+      z-index: 9999;
       flex-direction: column;
-      justify-content: flex-end;
-      padding: 80px 32px 48px;
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-      transition: opacity 0.35s ease, visibility 0.35s ease;
+      align-items: center;
+      justify-content: center;
+      padding: 0 40px;
     }
-    .menu-overlay.open {
-      opacity: 1;
-      visibility: visible;
-      pointer-events: auto;
-    }
+    .menu-overlay.open { display: flex; }
 
     .menu-close {
       position: absolute;
-      top: 52px; right: 24px;
-      background: rgba(255,255,255,0.2);
-      border: 1px solid rgba(255,255,255,0.4);
-      border-radius: 100px;
-      padding: 10px 22px;
-      color: var(--cream);
-      font-family: var(--ff-sans);
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+      top: 52px; right: 28px;
+      background: none;
+      border: none;
+      color: #F2EDE3;
+      width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
       cursor: pointer;
-      min-height: 44px;
-      min-width: 44px;
+      padding: 0;
     }
-    .menu-close:focus-visible { outline: 2px solid var(--cream); outline-offset: 2px; }
+    .menu-close:focus-visible { outline: 2px solid #F2EDE3; outline-offset: 4px; }
 
-    .menu-nav { display: flex; flex-direction: column; gap: 0; }
+    .menu-nav {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
 
     .menu-nav a {
       display: block;
-      font-family: var(--ff-serif);
-      font-size: 42px;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 52px;
       font-weight: 900;
       font-style: italic;
-      color: var(--cream);
+      color: #F2EDE3;
       text-decoration: none;
       line-height: 1.0;
-      padding: 14px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      transition: color 0.2s;
+      padding: 18px 0;
+      text-align: center;
+      width: 100%;
+      border-bottom: 1px solid rgba(242,237,227,0.1);
+      transition: opacity 0.15s;
     }
-    .menu-nav a:last-child { border-bottom: none; }
-    .menu-nav a:hover { color: rgba(242,237,227,0.7); }
-    .menu-nav a:focus-visible { outline: 2px solid var(--cream); outline-offset: 4px; }
+    .menu-nav a:first-child { border-top: 1px solid rgba(242,237,227,0.1); }
+    .menu-nav a:hover, .menu-nav a:focus-visible { opacity: 0.55; outline: none; }
 
     .menu-date {
-      margin-top: 40px;
+      position: absolute;
+      bottom: 44px;
+      font-family: 'DM Sans', system-ui, sans-serif;
       font-size: 11px;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: rgba(242, 237, 227, 0.4);
+      color: rgba(242, 237, 227, 0.38);
+      text-align: center;
     }
 
     /* ── HERO ── */
@@ -1033,7 +1022,11 @@
 
   <!-- MOBILE MENU -->
   <div class="menu-overlay" id="menuOverlay" role="dialog" aria-modal="true" aria-label="Navigasjonsmeny">
-    <button class="menu-close" onclick="closeMenu()" aria-label="Lukk meny">Lukk</button>
+    <button class="menu-close" onclick="closeMenu()" aria-label="Lukk meny">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <path d="M2 2L18 18M18 2L2 18" stroke="#F2EDE3" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
     <nav class="menu-nav" aria-label="Mobilnavigasjon">
       <a href="#program" onclick="closeMenu()">Program</a>
       <a href="#spillere" onclick="closeMenu()">Spillere</a>
@@ -1562,14 +1555,14 @@
     function openMenu() {
       document.getElementById('menuOverlay').classList.add('open');
       document.documentElement.style.overflow = 'hidden';
-      document.body.classList.add('menu-open');
+      document.querySelector('nav').style.visibility = 'hidden';
       document.getElementById('menuOverlay').querySelector('.menu-close').focus();
     }
 
     function closeMenu() {
       document.getElementById('menuOverlay').classList.remove('open');
       document.documentElement.style.overflow = '';
-      document.body.classList.remove('menu-open');
+      document.querySelector('nav').style.visibility = '';
     }
 
     document.getElementById('menuOverlay').addEventListener('keydown', e => {
