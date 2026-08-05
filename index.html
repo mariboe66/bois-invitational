@@ -174,7 +174,7 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      padding: 100px 24px 52px;
+      padding: 120px 24px 80px;
       position: relative;
       overflow: hidden;
     }
@@ -192,16 +192,16 @@
 
     .hero-team {
       position: absolute;
-      top: 60px;
+      top: 72px;
       bottom: auto;
       right: 0;
-      width: 85%;
+      width: 92%;
       pointer-events: none;
       object-fit: contain;
       object-position: top right;
       filter: sepia(18%) saturate(82%);
-      -webkit-mask-image: radial-gradient(ellipse 90% 80% at 70% 50%, black 30%, transparent 75%);
-      mask-image: radial-gradient(ellipse 90% 80% at 70% 50%, black 30%, transparent 75%);
+      -webkit-mask-image: linear-gradient(to bottom, black 0%, black 55%, transparent 90%);
+      mask-image: linear-gradient(to bottom, black 0%, black 55%, transparent 90%);
       opacity: 0;
       animation: heroTeamIn 1.4s 0.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
     }
@@ -278,7 +278,7 @@
 
     /* ── SHARED SECTION ── */
     .section {
-      padding: 80px 24px;
+      padding: 80px 16px;
     }
 
     .section-label {
@@ -316,7 +316,7 @@
 
     .day-card {
       background: var(--green);
-      padding: 36px 28px 32px;
+      padding: 36px 20px 32px;
       transition: background 0.2s;
     }
     .day-card:hover { background: rgba(255,255,255,0.04); }
@@ -1023,7 +1023,9 @@
 
   <!-- NAV -->
   <nav>
-    <a href="#" class="nav-logo">Bois Invitational</a>
+    <a href="#" class="nav-logo" aria-label="Bois Invitational">
+      <img src="img/logo.svg" alt="Bois Invitational" height="36">
+    </a>
     <ul class="nav-links" role="list">
       <li><a href="#program">Program</a></li>
       <li><a href="#spillere">Spillere</a></li>
@@ -1054,9 +1056,9 @@
       </h1>
       <div class="hero-footer">
         <p class="hero-tagline">
-          Seven players.<br>
-          Four courses.<br>
-          One trophy.
+          Syv spillere.<br>
+          Fire baner.<br>
+          Ett trofé.
         </p>
         <div class="scroll-indicator" aria-hidden="true">
           <div class="scroll-line"></div>
