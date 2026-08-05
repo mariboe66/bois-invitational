@@ -614,6 +614,40 @@
       font-weight: 500;
     }
 
+    .player-nick {
+      font-family: var(--ff-serif);
+      font-size: 13px;
+      font-style: italic;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .player-bio {
+      margin-top: 12px;
+      border-top: 1px solid var(--border);
+      padding-top: 11px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .player-bio-row { display: flex; flex-direction: column; gap: 2px; }
+
+    .player-bio-label {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .player-bio-text {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
     /* Featured: spans full width on mobile */
     .player-card--featured {
       grid-column: span 2;
@@ -1148,38 +1182,133 @@
         <div class="player-photo"><img src="img/mjos.jpg" alt="Magnus Mjøsund"></div>
         <div class="player-info">
           <p class="player-name">Mjøs</p>
+          <p class="player-nick">«Paper Tiger»</p>
           <p class="player-hcp">HCP <strong>10,2</strong></p>
+          <div class="player-bio">
+            <div class="player-bio-row">
+              <span class="player-bio-label">Styrker</span>
+              <span class="player-bio-text">Kjenner smutthullene i regelverket som arrangør</span>
+            </div>
+            <div class="player-bio-row">
+              <span class="player-bio-label">Svakheter</span>
+              <span class="player-bio-text">Ikke spilt til hcpet på 2 år</span>
+            </div>
+          </div>
         </div>
       </article>
 
       <article class="player-card" tabindex="0">
         <div class="player-photo"><img src="img/sumstad.jpg" alt="Petter Sumstad"></div>
-        <div class="player-info"><p class="player-name">Sumstad</p><p class="player-hcp">HCP <strong>20,5</strong></p></div>
+        <div class="player-info">
+          <p class="player-name">Sumstad</p>
+          <p class="player-nick">«Brunbjørnen»</p>
+          <p class="player-hcp">HCP <strong>20,5</strong></p>
+          <div class="player-bio">
+            <div class="player-bio-row">
+              <span class="player-bio-label">Styrker</span>
+              <span class="player-bio-text">Ny 7wood i ny bag</span>
+            </div>
+            <div class="player-bio-row">
+              <span class="player-bio-label">Svakheter</span>
+              <span class="player-bio-text">Skjør lukkemuskel, hcp øker i takt med promillen</span>
+            </div>
+          </div>
+        </div>
       </article>
 
       <article class="player-card" tabindex="0">
-        <div class="player-photo"><img src="img/angel.jpg" alt="Markus Angelvik"></div>
-        <div class="player-info"><p class="player-name">Angel</p><p class="player-hcp">HCP <strong>22,6</strong></p></div>
+        <div class="player-photo"><img src="img/angel.jpg" alt="Marcus Angelvik"></div>
+        <div class="player-info">
+          <p class="player-name">Angel</p>
+          <p class="player-nick">«Gardina»</p>
+          <p class="player-hcp">HCP <strong>22,6</strong></p>
+          <div class="player-bio">
+            <div class="player-bio-row">
+              <span class="player-bio-label">Styrker</span>
+              <span class="player-bio-text">Feltets dyreste sving</span>
+            </div>
+            <div class="player-bio-row">
+              <span class="player-bio-label">Svakheter</span>
+              <span class="player-bio-text">Gardina ofte gått ned før hull 2</span>
+            </div>
+          </div>
+        </div>
       </article>
 
       <article class="player-card" tabindex="0">
-        <div class="player-photo"><img src="img/lars.jpg" alt="Lars Nordvang"></div>
-        <div class="player-info"><p class="player-name">Lars</p><p class="player-hcp">HCP <strong>26,1</strong></p></div>
+        <div class="player-photo"><img src="img/lars.jpg" alt="Lars Nordang"></div>
+        <div class="player-info">
+          <p class="player-name">Lars</p>
+          <p class="player-nick">«Iron Man»</p>
+          <p class="player-hcp">HCP <strong>26,1</strong></p>
+          <div class="player-bio">
+            <div class="player-bio-row">
+              <span class="player-bio-label">Styrker</span>
+              <span class="player-bio-text">Simulator</span>
+            </div>
+            <div class="player-bio-row">
+              <span class="player-bio-label">Svakheter</span>
+              <span class="player-bio-text">Slår 100m med alle jern, tror driveren har strøm i seg</span>
+            </div>
+          </div>
+        </div>
       </article>
 
       <article class="player-card" tabindex="0">
-        <div class="player-photo"><img src="img/sala.jpg" alt="Christian Sala"></div>
-        <div class="player-info"><p class="player-name">Sala</p><p class="player-hcp">HCP <strong>34,0</strong></p></div>
+        <div class="player-photo"><img src="img/sala.jpg" alt="Christian Salazar"></div>
+        <div class="player-info">
+          <p class="player-name">Sala</p>
+          <p class="player-nick">«Gringo»</p>
+          <p class="player-hcp">HCP <strong>34,0</strong></p>
+          <div class="player-bio">
+            <div class="player-bio-row">
+              <span class="player-bio-label">Styrker</span>
+              <span class="player-bio-text">Lokal guide, bra drip</span>
+            </div>
+            <div class="player-bio-row">
+              <span class="player-bio-label">Svakheter</span>
+              <span class="player-bio-text">For drippy</span>
+            </div>
+          </div>
+        </div>
       </article>
 
       <article class="player-card" tabindex="0">
         <div class="player-photo"><img src="img/engan.jpg" alt="Oskar Engan"></div>
-        <div class="player-info"><p class="player-name">Engan</p><p class="player-hcp">HCP <strong>36,0</strong></p></div>
+        <div class="player-info">
+          <p class="player-name">Engan</p>
+          <p class="player-nick">«Dr Silk Swing»</p>
+          <p class="player-hcp">HCP <strong>36,0</strong></p>
+          <div class="player-bio">
+            <div class="player-bio-row">
+              <span class="player-bio-label">Styrker</span>
+              <span class="player-bio-text">Feltets peneste sving</span>
+            </div>
+            <div class="player-bio-row">
+              <span class="player-bio-label">Svakheter</span>
+              <span class="player-bio-text">Hater å spille golf</span>
+            </div>
+          </div>
+        </div>
       </article>
 
       <article class="player-card" tabindex="0">
         <div class="player-photo"><img src="img/grande.jpg" alt="Jon Grande"></div>
-        <div class="player-info"><p class="player-name">Grande</p><p class="player-hcp">HCP <strong>36,0</strong></p></div>
+        <div class="player-info">
+          <p class="player-name">Grande</p>
+          <p class="player-nick">«Jokern»</p>
+          <p class="player-hcp">HCP <strong>36,0</strong></p>
+          <div class="player-bio">
+            <div class="player-bio-row">
+              <span class="player-bio-label">Styrker</span>
+              <span class="player-bio-text">Høyt hcp, god gong i flighten</span>
+            </div>
+            <div class="player-bio-row">
+              <span class="player-bio-label">Svakheter</span>
+              <span class="player-bio-text">Så vidt tatt i en golfkølle</span>
+            </div>
+          </div>
+        </div>
       </article>
 
     </div>
