@@ -100,7 +100,10 @@
     /* ── MOBILE MENU ── */
     .menu-overlay {
       position: fixed;
-      inset: 0;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100%;
+      height: 100vh;
+      height: 100dvh;
       background: var(--green);
       z-index: 200;
       display: flex;
@@ -353,10 +356,11 @@
 
     .day-round + .day-round { margin-top: 24px; }
 
-    /* Course image */
+    /* Course image — padding-bottom trick for iOS Safari compatibility */
     .course-img-placeholder {
       width: 100%;
-      aspect-ratio: 16 / 7;
+      height: 0;
+      padding-bottom: 43.75%; /* 7/16 ratio */
       border-radius: var(--r-lg);
       margin-bottom: 20px;
       background: rgba(255,255,255,0.05);
@@ -1542,14 +1546,24 @@
     function openMenu() {
       const overlay = document.getElementById('menuOverlay');
       overlay.classList.add('open');
-      document.body.style.overflow = 'hidden';
+      // iOS-safe scroll lock
+      const scrollY = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
+      overlay._savedScroll = scrollY;
       overlay.querySelector('.menu-close').focus();
     }
 
     function closeMenu() {
       const overlay = document.getElementById('menuOverlay');
       overlay.classList.remove('open');
-      document.body.style.overflow = '';
+      // Restore scroll position
+      const scrollY = overlay._savedScroll || 0;
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      window.scrollTo(0, scrollY);
     }
 
     document.getElementById('menuOverlay').addEventListener('keydown', e => {
