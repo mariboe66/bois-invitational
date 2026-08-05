@@ -51,6 +51,13 @@
       -webkit-backdrop-filter: blur(16px);
     }
 
+    /* iOS Safari: backdrop-filter creates a stacking context that bleeds above higher z-index elements */
+    body.menu-open nav {
+      z-index: 1;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+
     .nav-logo {
       font-family: var(--ff-sans);
       font-size: 11px;
@@ -118,18 +125,19 @@
     .menu-close {
       position: absolute;
       top: 20px; right: 24px;
-      background: rgba(255,255,255,0.1);
-      border: none;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.3);
       border-radius: 100px;
-      padding: 9px 18px;
+      padding: 9px 20px;
       color: var(--cream);
       font-family: var(--ff-sans);
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 500;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       cursor: pointer;
       min-height: 44px;
+      min-width: 44px;
     }
     .menu-close:focus-visible { outline: 2px solid var(--cream); outline-offset: 2px; }
 
@@ -371,9 +379,8 @@
 
     .course-img-placeholder img {
       position: absolute;
-      top: 0; left: 0;
+      top: 0; left: 0; right: 0; bottom: 0;
       width: 100%;
-      height: 100%;
       object-fit: cover;
       display: block;
     }
@@ -1549,26 +1556,16 @@
 
   <script>
     function openMenu() {
-      const overlay = document.getElementById('menuOverlay');
-      overlay.classList.add('open');
-      // iOS-safe scroll lock
-      const scrollY = window.scrollY;
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${scrollY}px`;
-      document.body.style.width = '100%';
-      overlay._savedScroll = scrollY;
-      overlay.querySelector('.menu-close').focus();
+      document.getElementById('menuOverlay').classList.add('open');
+      document.documentElement.style.overflow = 'hidden';
+      document.body.classList.add('menu-open');
+      document.getElementById('menuOverlay').querySelector('.menu-close').focus();
     }
 
     function closeMenu() {
-      const overlay = document.getElementById('menuOverlay');
-      overlay.classList.remove('open');
-      // Restore scroll position
-      const scrollY = overlay._savedScroll || 0;
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
-      window.scrollTo(0, scrollY);
+      document.getElementById('menuOverlay').classList.remove('open');
+      document.documentElement.style.overflow = '';
+      document.body.classList.remove('menu-open');
     }
 
     document.getElementById('menuOverlay').addEventListener('keydown', e => {
