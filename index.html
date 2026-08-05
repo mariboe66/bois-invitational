@@ -179,6 +179,30 @@
     .hero-ring-1 { width: 280px; height: 280px; }
     .hero-ring-2 { width: 440px; height: 440px; right: -160px; top: 10%; border-color: rgba(37,61,44,0.06); }
 
+    .hero-team {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 72%;
+      pointer-events: none;
+      object-fit: contain;
+      object-position: bottom right;
+      filter: sepia(18%) saturate(82%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.5) 28%, black 52%);
+      mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.5) 28%, black 52%);
+      opacity: 0;
+      animation: heroTeamIn 1.4s 0.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+    }
+
+    @keyframes heroTeamIn {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 0.42; transform: translateY(0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-team { animation: none; opacity: 0.42; }
+    }
+
     .hero-overline {
       font-size: 11px;
       font-weight: 500;
@@ -929,6 +953,20 @@
       .nav-menu-btn { display: none; }
 
       .hero { padding: 120px 48px 64px; }
+      .hero-team {
+        width: auto;
+        height: 92%;
+        right: -10px;
+        animation-name: heroTeamInDesktop;
+      }
+      @keyframes heroTeamInDesktop {
+        from { opacity: 0; transform: translateY(28px); }
+        to   { opacity: 0.88; transform: translateY(0); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .hero-team { animation: none; opacity: 0.88; }
+      }
+      .hero-ring { display: none; }
 
       .section { padding: 120px 48px; }
 
@@ -987,6 +1025,7 @@
   <header class="hero" aria-labelledby="main-title">
     <div class="hero-ring hero-ring-1" aria-hidden="true"></div>
     <div class="hero-ring hero-ring-2" aria-hidden="true"></div>
+    <img class="hero-team" src="img/team.png" alt="" aria-hidden="true">
     <div>
       <p class="hero-overline">España · 13–16 August 2026</p>
       <h1 class="hero-title" id="main-title">
