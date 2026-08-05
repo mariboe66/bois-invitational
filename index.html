@@ -101,13 +101,17 @@
     .menu-overlay {
       display: none;
       position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
       background-color: #253D2C;
       z-index: 9999;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       padding: 0 40px;
+      isolation: isolate;
     }
     .menu-overlay.open { display: flex; }
 
@@ -1009,7 +1013,7 @@
 <body>
 
   <!-- NAV -->
-  <nav>
+  <nav id="mainNav">
     <a href="#" class="nav-logo">Bois Invitational</a>
     <ul class="nav-links" role="list">
       <li><a href="#program">Program</a></li>
@@ -1019,22 +1023,6 @@
     </ul>
     <button class="nav-menu-btn" onclick="openMenu()" aria-haspopup="dialog" aria-label="Åpne meny">Meny</button>
   </nav>
-
-  <!-- MOBILE MENU -->
-  <div class="menu-overlay" id="menuOverlay" role="dialog" aria-modal="true" aria-label="Navigasjonsmeny">
-    <button class="menu-close" onclick="closeMenu()" aria-label="Lukk meny">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-        <path d="M2 2L18 18M18 2L2 18" stroke="#F2EDE3" stroke-width="1.5" stroke-linecap="round"/>
-      </svg>
-    </button>
-    <nav class="menu-nav" aria-label="Mobilnavigasjon">
-      <a href="#program" onclick="closeMenu()">Program</a>
-      <a href="#spillere" onclick="closeMenu()">Spillere</a>
-      <a href="#baner" onclick="closeMenu()">Baner</a>
-      <a href="#reglement" onclick="closeMenu()">Reglement</a>
-    </nav>
-    <p class="menu-date">13–16 August · España · 2026</p>
-  </div>
 
   <!-- HERO -->
   <header class="hero" aria-labelledby="main-title">
@@ -1555,14 +1543,14 @@
     function openMenu() {
       document.getElementById('menuOverlay').classList.add('open');
       document.documentElement.style.overflow = 'hidden';
-      document.querySelector('nav').style.visibility = 'hidden';
+      document.getElementById('mainNav').style.display = 'none';
       document.getElementById('menuOverlay').querySelector('.menu-close').focus();
     }
 
     function closeMenu() {
       document.getElementById('menuOverlay').classList.remove('open');
       document.documentElement.style.overflow = '';
-      document.querySelector('nav').style.visibility = '';
+      document.getElementById('mainNav').style.display = '';
     }
 
     document.getElementById('menuOverlay').addEventListener('keydown', e => {
@@ -1593,6 +1581,22 @@
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
+
+  <!-- MOBILE MENU — sist i DOM for korrekt render-rekkefølge -->
+  <div class="menu-overlay" id="menuOverlay" role="dialog" aria-modal="true" aria-label="Navigasjonsmeny">
+    <button class="menu-close" onclick="closeMenu()" aria-label="Lukk meny">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <path d="M2 2L18 18M18 2L2 18" stroke="#F2EDE3" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <nav class="menu-nav" aria-label="Mobilnavigasjon">
+      <a href="#program" onclick="closeMenu()">Program</a>
+      <a href="#spillere" onclick="closeMenu()">Spillere</a>
+      <a href="#baner" onclick="closeMenu()">Baner</a>
+      <a href="#reglement" onclick="closeMenu()">Reglement</a>
+    </nav>
+    <p class="menu-date">13–16 August · España · 2026</p>
+  </div>
 
 </body>
 </html>
