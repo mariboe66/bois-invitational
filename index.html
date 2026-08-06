@@ -922,11 +922,18 @@
 
     .tourney-row {
       display: grid;
-      grid-template-columns: 32px 2fr 2fr 1fr;
+      grid-template-columns: 2fr 2fr 1fr;
       gap: 8px;
       padding: 16px 20px;
       border-bottom: 1px solid rgba(255,255,255,0.07);
-      align-items: baseline;
+      align-items: start;
+    }
+    .tourney-round,
+    .tourney-bane,
+    .tourney-format,
+    .tourney-points {
+      padding-top: 0;
+      margin-top: 0;
     }
     .tourney-bane {
       font-size: 14px;
@@ -960,6 +967,7 @@
       font-weight: 400;
       color: rgba(242,237,227,0.6);
       line-height: 1.4;
+      text-align: right;
     }
 
     .tourney-points {
@@ -1022,6 +1030,50 @@
       .reveal { opacity: 1; transform: none; transition: none; }
       .scroll-line { animation: none; opacity: 0.5; }
       html { scroll-behavior: auto; }
+    }
+
+    /* ── TOURNEY TABLE MOBIL ── */
+    @media (max-width: 767px) {
+      #reglement .tourney-table {
+        margin-left: -8px;
+        margin-right: -8px;
+      }
+      .tourney-row {
+        grid-template-columns: 120px 1fr auto;
+        gap: 6px;
+        padding: 12px 16px;
+        align-items: start;
+      }
+      .tourney-round,
+      .tourney-bane,
+      .tourney-format,
+      .tourney-points {
+        align-self: start;
+        padding-top: 0;
+        margin-top: 0;
+      }
+      .tourney-round,
+      .tourney-bane {
+        font-size: 13px;
+        text-align: left;
+      }
+      .tourney-format {
+        font-size: 13px;
+        text-align: right;
+      }
+      .tourney-row--header span {
+        font-size: 10px;
+        text-align: left;
+        align-self: start;
+      }
+      .tourney-row--header span:nth-child(2),
+      .tourney-row--header span:nth-child(3) {
+        text-align: right;
+      }
+      .tourney-points {
+        font-size: 14px;
+        text-align: right;
+      }
     }
 
     /* ── DESKTOP ── */
@@ -1277,31 +1329,26 @@
     <h2 class="section-title" id="reglement-heading">Turnerings<em>oversikt</em></h2>
     <div class="tourney-table" role="table" aria-label="Turneringsoppsett">
       <div class="tourney-row tourney-row--header" role="row">
-        <span role="columnheader">R</span>
         <span role="columnheader">Bane</span>
         <span role="columnheader">Format</span>
         <span role="columnheader">Poeng</span>
       </div>
       <div class="tourney-row" role="row">
-        <span class="tourney-round" role="cell">1</span>
         <span class="tourney-bane" role="cell">El Plantío</span>
         <span class="tourney-format" role="cell">Texas Scramble</span>
         <span class="tourney-points" role="cell">2</span>
       </div>
       <div class="tourney-row" role="row">
-        <span class="tourney-round" role="cell">2</span>
         <span class="tourney-bane" role="cell">Font del Llop</span>
         <span class="tourney-format" role="cell">Best Ball Skins</span>
-        <span class="tourney-points" role="cell">2 per match</span>
+        <span class="tourney-points" role="cell">2 pr match</span>
       </div>
       <div class="tourney-row" role="row">
-        <span class="tourney-round" role="cell">3</span>
         <span class="tourney-bane" role="cell">Alenda Golf</span>
-        <span class="tourney-format" role="cell">Alternate Shot Matchplay</span>
-        <span class="tourney-points" role="cell">2 per match</span>
+        <span class="tourney-format" role="cell">Alt. Shot Matchplay</span>
+        <span class="tourney-points" role="cell">2 pr match</span>
       </div>
       <div class="tourney-row" role="row">
-        <span class="tourney-round" role="cell">4</span>
         <span class="tourney-bane" role="cell">La Marquesa</span>
         <span class="tourney-format" role="cell">Individuell Stableford</span>
         <span class="tourney-points" role="cell">4</span>
