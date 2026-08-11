@@ -759,13 +759,18 @@
     .course-card:hover { background: rgba(37,61,44,0.05); }
     .course-card:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
 
+    .course-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 6px;
+    }
     .course-index {
       font-family: var(--ff-serif);
       font-size: 15px;
       font-style: italic;
       color: var(--text-muted);
-      margin-bottom: 6px;
-      padding-right: 120px;
     }
     .course-name {
       font-family: var(--ff-serif);
@@ -774,7 +779,6 @@
       color: var(--text);
       line-height: 1.1;
       margin-bottom: 8px;
-      padding-right: 120px;
     }
     .course-desc {
       font-size: 15px;
@@ -814,9 +818,6 @@
       color: var(--text);
     }
     .course-badge {
-      position: absolute;
-      top: 22px;
-      right: 20px;
       background: var(--green);
       color: var(--cream);
       font-size: 10px;
@@ -1451,8 +1452,8 @@
           <p class="player-name">Christian <em>«Gringo»</em> Salazar</p>
           <span class="player-hcp-pill">HCP 34,0</span>
           <div class="player-bio">
-            <div class="player-bio-row"><span class="player-bio-label">Styrker</span><span class="player-bio-text">Lokal guide, bra drip</span></div>
-            <div class="player-bio-row"><span class="player-bio-label">Svakheter</span><span class="player-bio-text">For drippy</span></div>
+            <div class="player-bio-row"><span class="player-bio-label">Styrker</span><span class="player-bio-text">Spansk morsmål og spanske hender</span></div>
+            <div class="player-bio-row"><span class="player-bio-label">Svakheter</span><span class="player-bio-text">Høyre-ekstrem fra tee</span></div>
           </div>
         </div>
       </article>
@@ -1494,8 +1495,10 @@
     <div class="courses-list">
 
       <article class="course-card" tabindex="0">
-        <span class="course-badge">Torsdag</span>
-        <p class="course-index">Bane 01</p>
+        <div class="course-card-header">
+          <p class="course-index">Bane 01</p>
+          <span class="course-badge">Torsdag</span>
+        </div>
         <h3 class="course-name">Club de Golf El Plantío</h3>
         <p class="course-desc">Parkbane fra 1972 med skyggefulle fairways og tekniske approaches — en klassiker nær Alicante.</p>
         <div class="course-card-bottom">
@@ -1524,8 +1527,10 @@
       </article>
 
       <article class="course-card" tabindex="0">
-        <span class="course-badge">Fredag morgen</span>
-        <p class="course-index">Bane 02</p>
+        <div class="course-card-header">
+          <p class="course-index">Bane 02</p>
+          <span class="course-badge">Fredag morgen</span>
+        </div>
         <h3 class="course-name">Font del Llop Golf Resort</h3>
         <p class="course-desc">Lang og smal bane med doglegs, strategiske bunkers og vannhindre — teknisk krevende fra første utslagsted.</p>
         <div class="course-card-bottom">
@@ -1554,8 +1559,10 @@
       </article>
 
       <article class="course-card" tabindex="0">
-        <span class="course-badge">Fredag ettermiddag</span>
-        <p class="course-index">Bane 03</p>
+        <div class="course-card-header">
+          <p class="course-index">Bane 03</p>
+          <span class="course-badge">Fredag ettermiddag</span>
+        </div>
         <h3 class="course-name">Alenda Golf</h3>
         <p class="course-desc">Åpen bane fra 1999 med straffende rough og store par-5-hull — belønner langt og nøyaktig spill.</p>
         <div class="course-card-bottom">
@@ -1584,8 +1591,10 @@
       </article>
 
       <article class="course-card" tabindex="0">
-        <span class="course-badge">Lørdag</span>
-        <p class="course-index">Bane 04</p>
+        <div class="course-card-header">
+          <p class="course-index">Bane 04</p>
+          <span class="course-badge">Lørdag</span>
+        </div>
         <h3 class="course-name">La Marquesa Golf & Country Club</h3>
         <p class="course-desc">Grunnlagt i 1989 i dalen mellom Quesada-fjellene. Hull 16 er en nøyaktig kopi av det legendariske 17. hullet på TPC Sawgrass.</p>
         <div class="course-card-bottom">
