@@ -1808,7 +1808,7 @@
         target.classList.add('open');
         btn.setAttribute('aria-expanded', 'true');
       }
-      setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 420);
+      setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 10);
     }
 
     const observer = new IntersectionObserver(entries => {
