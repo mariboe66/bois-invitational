@@ -237,6 +237,11 @@
       font-style: italic;
       color: var(--green);
     }
+    .hero-title-year {
+      font-size: clamp(36px, 7vw, 100px);
+      display: block;
+      margin-top: 0.1em;
+    }
 
     .hero-footer {
       display: flex;
@@ -745,11 +750,9 @@
     .course-card {
       background: var(--cream);
       border-radius: var(--r-lg);
-      padding: 22px 20px;
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 16px;
+      padding: 22px 20px 20px;
+      display: block;
+      position: relative;
       transition: background 0.2s;
       cursor: default;
     }
@@ -758,10 +761,11 @@
 
     .course-index {
       font-family: var(--ff-serif);
-      font-size: 11px;
+      font-size: 15px;
       font-style: italic;
       color: var(--text-muted);
       margin-bottom: 6px;
+      padding-right: 120px;
     }
     .course-name {
       font-family: var(--ff-serif);
@@ -770,6 +774,7 @@
       color: var(--text);
       line-height: 1.1;
       margin-bottom: 8px;
+      padding-right: 120px;
     }
     .course-desc {
       font-size: 15px;
@@ -777,11 +782,15 @@
       line-height: 1.55;
       margin-bottom: 14px;
     }
+    .course-card-info {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
     .course-location {
       display: flex;
       flex-direction: column;
       gap: 2px;
-      margin-bottom: 12px;
     }
     .course-meta {
       display: flex;
@@ -804,14 +813,10 @@
       font-size: 13px;
       color: var(--text);
     }
-    .course-card-right {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 16px;
-      flex-shrink: 0;
-    }
     .course-badge {
+      position: absolute;
+      top: 22px;
+      right: 20px;
       background: var(--green);
       color: var(--cream);
       font-size: 10px;
@@ -825,10 +830,18 @@
       display: flex;
       align-items: center;
     }
+    .course-card-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 12px;
+    }
     .course-club-logo {
-      width: 92px;
-      height: 92px;
+      width: 72px;
+      height: 72px;
       object-fit: contain;
+      flex-shrink: 0;
       opacity: 0.85;
       mix-blend-mode: multiply;
     }
@@ -1172,7 +1185,7 @@
     <div>
       <p class="hero-overline">Santa Pola · 13–16 August 2026</p>
       <h1 class="hero-title" id="main-title">
-        Bois<br><em>Invitational</em>
+        Bois<br><em>Invitational</em><br><span class="hero-title-year">2026</span>
       </h1>
       <div class="hero-footer">
         <p class="hero-tagline">
@@ -1487,121 +1500,121 @@
     <div class="courses-list">
 
       <article class="course-card" tabindex="0">
-        <div>
-          <p class="course-index">Bane 01</p>
-          <h3 class="course-name">Club de Golf El Plantío</h3>
-          <p class="course-desc">Parkbane fra 1972 med skyggefulle fairways og tekniske approaches — en klassiker nær Alicante.</p>
-          <div class="course-location">
-            <span class="course-meta-label">Sted</span>
-            <span class="course-meta-value">Elche, Costa Blanca</span>
+        <span class="course-badge">Torsdag</span>
+        <p class="course-index">Bane 01</p>
+        <h3 class="course-name">Club de Golf El Plantío</h3>
+        <p class="course-desc">Parkbane fra 1972 med skyggefulle fairways og tekniske approaches — en klassiker nær Alicante.</p>
+        <div class="course-card-bottom">
+          <div class="course-card-info">
+            <div class="course-location">
+              <span class="course-meta-label">Sted</span>
+              <span class="course-meta-value">Elche, Costa Blanca</span>
+            </div>
+            <div class="course-meta">
+              <div class="course-meta-item">
+                <span class="course-meta-label">Hull</span>
+                <span class="course-meta-value">18</span>
+              </div>
+              <div class="course-meta-item">
+                <span class="course-meta-label">Par</span>
+                <span class="course-meta-value">72</span>
+              </div>
+              <div class="course-meta-item">
+                <span class="course-meta-label">Lengde</span>
+                <span class="course-meta-value">5.977 m</span>
+              </div>
+            </div>
           </div>
-          <div class="course-meta">
-            <div class="course-meta-item">
-              <span class="course-meta-label">Hull</span>
-              <span class="course-meta-value">18</span>
-            </div>
-            <div class="course-meta-item">
-              <span class="course-meta-label">Par</span>
-              <span class="course-meta-value">72</span>
-            </div>
-            <div class="course-meta-item">
-              <span class="course-meta-label">Lengde</span>
-              <span class="course-meta-value">5.977 m</span>
-            </div>
-          </div>
-        </div>
-        <div class="course-card-right">
-          <span class="course-badge">Torsdag</span>
           <img src="img/logo-plantio.png" alt="Club de Golf El Plantío logo" class="course-club-logo">
         </div>
       </article>
 
       <article class="course-card" tabindex="0">
-        <div>
-          <p class="course-index">Bane 02</p>
-          <h3 class="course-name">Font del Llop Golf Resort</h3>
-          <p class="course-desc">Lang og smal bane med doglegs, strategiske bunkers og vannhindre — teknisk krevende fra første utslagsted.</p>
-          <div class="course-location">
-            <span class="course-meta-label">Sted</span>
-            <span class="course-meta-value">Monforte del Cid, Costa Blanca</span>
+        <span class="course-badge">Fredag morgen</span>
+        <p class="course-index">Bane 02</p>
+        <h3 class="course-name">Font del Llop Golf Resort</h3>
+        <p class="course-desc">Lang og smal bane med doglegs, strategiske bunkers og vannhindre — teknisk krevende fra første utslagsted.</p>
+        <div class="course-card-bottom">
+          <div class="course-card-info">
+            <div class="course-location">
+              <span class="course-meta-label">Sted</span>
+              <span class="course-meta-value">Monforte del Cid, Costa Blanca</span>
+            </div>
+            <div class="course-meta">
+              <div class="course-meta-item">
+                <span class="course-meta-label">Hull</span>
+                <span class="course-meta-value">18</span>
+              </div>
+              <div class="course-meta-item">
+                <span class="course-meta-label">Par</span>
+                <span class="course-meta-value">72</span>
+              </div>
+              <div class="course-meta-item">
+                <span class="course-meta-label">Lengde</span>
+                <span class="course-meta-value">5.846 m</span>
+              </div>
+            </div>
           </div>
-          <div class="course-meta">
-            <div class="course-meta-item">
-              <span class="course-meta-label">Hull</span>
-              <span class="course-meta-value">18</span>
-            </div>
-            <div class="course-meta-item">
-              <span class="course-meta-label">Par</span>
-              <span class="course-meta-value">72</span>
-            </div>
-            <div class="course-meta-item">
-              <span class="course-meta-label">Lengde</span>
-              <span class="course-meta-value">5.846 m</span>
-            </div>
-          </div>
-        </div>
-        <div class="course-card-right">
-          <span class="course-badge">Fredag morgen</span>
           <img src="img/logo-fontdelllop2.png" alt="Font del Llop Golf Resort logo" class="course-club-logo" style="filter: invert(1);">
         </div>
       </article>
 
       <article class="course-card" tabindex="0">
-        <div>
-          <p class="course-index">Bane 03</p>
-          <h3 class="course-name">Alenda Golf</h3>
-          <p class="course-desc">Åpen bane fra 1999 med straffende rough og store par-5-hull — belønner langt og nøyaktig spill.</p>
-          <div class="course-location">
-            <span class="course-meta-label">Sted</span>
-            <span class="course-meta-value">Monforte del Cid, Costa Blanca</span>
+        <span class="course-badge">Fredag ettermiddag</span>
+        <p class="course-index">Bane 03</p>
+        <h3 class="course-name">Alenda Golf</h3>
+        <p class="course-desc">Åpen bane fra 1999 med straffende rough og store par-5-hull — belønner langt og nøyaktig spill.</p>
+        <div class="course-card-bottom">
+          <div class="course-card-info">
+            <div class="course-location">
+              <span class="course-meta-label">Sted</span>
+              <span class="course-meta-value">Monforte del Cid, Costa Blanca</span>
+            </div>
+            <div class="course-meta">
+              <div class="course-meta-item">
+                <span class="course-meta-label">Hull</span>
+                <span class="course-meta-value">18</span>
+              </div>
+              <div class="course-meta-item">
+                <span class="course-meta-label">Par</span>
+                <span class="course-meta-value">72</span>
+              </div>
+              <div class="course-meta-item">
+                <span class="course-meta-label">Lengde</span>
+                <span class="course-meta-value">5.932 m</span>
+              </div>
+            </div>
           </div>
-          <div class="course-meta">
-            <div class="course-meta-item">
-              <span class="course-meta-label">Hull</span>
-              <span class="course-meta-value">18</span>
-            </div>
-            <div class="course-meta-item">
-              <span class="course-meta-label">Par</span>
-              <span class="course-meta-value">72</span>
-            </div>
-            <div class="course-meta-item">
-              <span class="course-meta-label">Lengde</span>
-              <span class="course-meta-value">5.932 m</span>
-            </div>
-          </div>
-        </div>
-        <div class="course-card-right">
-          <span class="course-badge">Fredag ettermiddag</span>
           <img src="img/logo-alenda.jpg" alt="Alenda Golf logo" class="course-club-logo">
         </div>
       </article>
 
       <article class="course-card" tabindex="0">
-        <div>
-          <p class="course-index">Bane 04</p>
-          <h3 class="course-name">La Marquesa Golf & Country Club</h3>
-          <p class="course-desc">Grunnlagt i 1989 i dalen mellom Quesada-fjellene. Hull 16 er en nøyaktig kopi av det legendariske 17. hullet på TPC Sawgrass.</p>
-          <div class="course-location">
-            <span class="course-meta-label">Sted</span>
-            <span class="course-meta-value">Ciudad Quesada, Costa Blanca</span>
+        <span class="course-badge">Lørdag</span>
+        <p class="course-index">Bane 04</p>
+        <h3 class="course-name">La Marquesa Golf & Country Club</h3>
+        <p class="course-desc">Grunnlagt i 1989 i dalen mellom Quesada-fjellene. Hull 16 er en nøyaktig kopi av det legendariske 17. hullet på TPC Sawgrass.</p>
+        <div class="course-card-bottom">
+          <div class="course-card-info">
+            <div class="course-location">
+              <span class="course-meta-label">Sted</span>
+              <span class="course-meta-value">Ciudad Quesada, Costa Blanca</span>
+            </div>
+            <div class="course-meta">
+              <div class="course-meta-item">
+                <span class="course-meta-label">Hull</span>
+                <span class="course-meta-value">18</span>
+              </div>
+              <div class="course-meta-item">
+                <span class="course-meta-label">Par</span>
+                <span class="course-meta-value">72</span>
+              </div>
+              <div class="course-meta-item">
+                <span class="course-meta-label">Lengde</span>
+                <span class="course-meta-value">5.664 m</span>
+              </div>
+            </div>
           </div>
-          <div class="course-meta">
-            <div class="course-meta-item">
-              <span class="course-meta-label">Hull</span>
-              <span class="course-meta-value">18</span>
-            </div>
-            <div class="course-meta-item">
-              <span class="course-meta-label">Par</span>
-              <span class="course-meta-value">72</span>
-            </div>
-            <div class="course-meta-item">
-              <span class="course-meta-label">Lengde</span>
-              <span class="course-meta-value">5.664 m</span>
-            </div>
-          </div>
-        </div>
-        <div class="course-card-right">
-          <span class="course-badge">Lørdag</span>
           <img src="img/logo-marquesa.png" alt="La Marquesa Golf logo" class="course-club-logo">
         </div>
       </article>
